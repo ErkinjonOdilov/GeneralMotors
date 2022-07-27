@@ -6,6 +6,7 @@ import models.Cars;
 import service.AdminService;
 
 
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.Scanner;
 
@@ -102,6 +103,13 @@ public class Admin implements AdminService {
 
     @Override
     public void applications() {
+        if(!DataBase.userList.isEmpty()){
+            for (int i = 0; i < DataBase.userList.size(); i++) {
+                System.out.println((i+1)+" -> "+DataBase.userList.get(i).getFullName());
+            }
+            int n=scanner.nextInt()-1;
+            System.out.println(DataBase.userList.get(n));
+        }
 
     }
 }

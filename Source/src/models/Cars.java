@@ -3,14 +3,16 @@ package models;
 import com.google.gson.annotations.SerializedName;
 
 public class Cars{
-	public Cars(int horsepower, int year, String imgUrl, int price, String model, int id, String make) {
+	public Cars(int horsepower, int year,int price, String model, int id, String make) {
 		this.horsepower = horsepower;
 		this.year = year;
-		this.imgUrl = imgUrl;
 		this.price = price;
 		this.model = model;
 		this.id = id;
 		this.make = make;
+	}
+
+	public Cars() {
 	}
 
 	@SerializedName("horsepower")
@@ -92,15 +94,13 @@ public class Cars{
 
 	@Override
  	public String toString(){
-		return 
-			"Cars{" + 
-			"horsepower = '" + horsepower + '\'' + 
-			",year = '" + year + '\'' + 
-			",img_url = '" + imgUrl + '\'' + 
-			",price = '" + price + '\'' + 
-			",model = '" + model + '\'' + 
-			",id = '" + id + '\'' + 
-			",make = '" + make + '\'' + 
-			"}";
+		return
+			"Horse Power = " + horsepower +"\n"+
+			"Year = " + year + "\n" +
+			"Price = " + price + "\n" +
+			"Model = " + model + "\n" +
+			"ID = " + id + "\n" +
+			"Make = " + make + "\n";
+
 		}
 }

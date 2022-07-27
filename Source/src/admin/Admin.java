@@ -6,7 +6,6 @@ import models.Cars;
 import service.AdminService;
 
 
-import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.Scanner;
 
@@ -19,16 +18,13 @@ public class Admin implements AdminService {
             System.out.println("Welcome Admin Panel");
             System.out.println("Choose Options: ");
             System.out.println("     1->Show Cars\n" +
-                    "     2->Add Cars\n     3->Edit Cars\n     4->Remove Cars\n     5->Applications\n     0->Exit");
+                    "     2->Applications\n     0->Exit");
 
             int n=scanner.nextInt();
             switch (n){
                 case 0->{isTrue=false;}
                 case 1->{showCars();}
-                case 2->{addCars();}
-                case 3->{editCars();}
-                case 4->{removeCars();}
-                case 5->{applications();}
+                case 2->{applications();}
             }
         }
     }
@@ -65,41 +61,6 @@ public class Admin implements AdminService {
           }
 
       }
-
-
-
-    @Override
-    public void addCars() {
-        System.out.print("Horse Power: ");
-        int horsePower=scanner.nextInt();
-        System.out.print("Year: ");
-        int year=scanner.nextInt();
-        System.out.print("Price: ");
-        int price=scanner.nextInt();
-        System.out.print("Model: ");
-        scanner=new Scanner(System.in);
-        String model=scanner.nextLine();
-        System.out.print("Id: ");
-        int id=scanner.nextInt();
-        System.out.print("Made: ");
-        scanner=new Scanner(System.in);
-        String made=scanner.nextLine();
-        Cars cars=new Cars(horsePower,year,price,model,id,made);
-        File file=new File("CarsData.txt");
-        DataBase.carsList.add(cars);
-        System.out.println("Successfully added");
-
-    }
-
-    @Override
-    public void removeCars() {
-
-    }
-
-    @Override
-    public void editCars() {
-
-    }
 
     @Override
     public void applications() {

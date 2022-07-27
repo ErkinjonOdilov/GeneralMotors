@@ -6,12 +6,6 @@ public interface AdminService {
 
     void showCars();
 
-    void addCars();
-
-    void removeCars();
-
-    void editCars();
-
     void applications();
 
 

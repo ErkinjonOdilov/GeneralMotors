@@ -4,9 +4,6 @@ import com.google.gson.Gson;
 import data.DataBase;
 import models.Cars;
 import service.UserService;
-
-import javax.security.sasl.SaslClient;
-import javax.sql.rowset.spi.SyncResolver;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;

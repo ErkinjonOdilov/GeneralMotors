@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import data.DataBase;
 import models.Cars;
 import service.UserService;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,7 +33,7 @@ public class User implements UserService {
         this.cars = cars;
         this.month = month;
         this.percent = percent;
-        this.remainMoney=(((cars.getPrice() / 100) * percent) + cars.getPrice());
+        this.remainMoney = (((cars.getPrice() / 100) * percent) + cars.getPrice());
     }
 
     @Override
@@ -89,6 +90,7 @@ public class User implements UserService {
             System.out.println("Choose Cars: ");
             int n = scanner.nextInt() - 1;
             System.out.println(DataBase.carsList.get(n));
+            DataBase.carsList.clear();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,7 +119,6 @@ public class User implements UserService {
             for (Cars user : users) {
                 System.out.println((i + 1) + "->" + user.getModel());
                 i++;
-                DataBase.carsList.add(user);
             }
             System.out.println("Choose Cars: ");
             int n = scanner.nextInt() - 1;
@@ -133,7 +134,6 @@ public class User implements UserService {
             double returnMoney = monthlyPercent * month;
             System.out.println("You should return " + returnMoney + "$" + "in " + month + " month");
             System.out.println("You pay monthly " + monthlyPercent + "$");
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -154,17 +154,17 @@ public class User implements UserService {
         scanner = new Scanner(System.in);
         String birthPlace = scanner.nextLine();
         for (int i = 0; i < DataBase.carsList.size(); i++) {
-            System.out.println((i+1)+"->"+DataBase.carsList.get(i).getModel());
+            System.out.println((i + 1) + "->" + DataBase.carsList.get(i).getModel());
         }
         System.out.print("Which Car: ");
-        int carsModel=scanner.nextInt()-1;
+        int carsModel = scanner.nextInt() - 1;
         System.out.print("How many month: ");
         scanner = new Scanner(System.in);
         int month = scanner.nextInt();
         System.out.print("How many Percent per Year: ");
         scanner = new Scanner(System.in);
-        double percent=scanner.nextDouble();
-        User u1=new User(fullName,birthday,number,birthPlace,DataBase.carsList.get(carsModel),month,percent);
+        double percent = scanner.nextDouble();
+        User u1 = new User(fullName, birthday, number, birthPlace, DataBase.carsList.get(carsModel), month, percent);
         DataBase.userList.add(u1);
         System.out.println("Successfully filled");
 
@@ -230,12 +230,12 @@ public class User implements UserService {
     public String toString() {
         return
                 "Full Name=" + fullName + "\n" +
-                "Birthday=" + birthday + "\n" +
-                "Number=" + number + "\n" +
-                "Birth Place='" + birthPlace + "\n" +
-                 cars +
-                "Month=" + month +"\n"+
-                "Percent=" + percent+"\n" +
-                "Remain Money=" + remainMoney +"\n";
+                        "Birthday=" + birthday + "\n" +
+                        "Number=" + number + "\n" +
+                        "Birth Place='" + birthPlace + "\n" +
+                        cars +
+                        "Month=" + month + "\n" +
+                        "Percent=" + percent + "\n" +
+                        "Remain Money=" + remainMoney + "\n";
     }
 }

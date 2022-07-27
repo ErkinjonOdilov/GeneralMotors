@@ -18,15 +18,42 @@ public class Admin implements AdminService {
             System.out.println("Welcome Admin Panel");
             System.out.println("Choose Options: ");
             System.out.println("     1->Show Cars\n" +
-                    "     2->Applications\n     0->Exit");
+                    "     2->Applications\n     3->Write to Doc applications\n     0->Exit");
 
             int n=scanner.nextInt();
             switch (n){
                 case 0->{isTrue=false;}
                 case 1->{showCars();}
                 case 2->{applications();}
+                case 3->{writeToDoc();}
             }
         }
+    }
+
+    @Override
+    public void writeToDoc() {
+        if(!DataBase.userList.isEmpty()){
+            System.out.print("Which person's Applications write: ");
+            for (int i = 0; i < DataBase.userList.size(); i++) {
+                System.out.println((i+1)+" -> "+DataBase.userList.get(i).getFullName());
+            }
+            int n=scanner.nextInt()-1;
+            byte[] jsonString=DataBase.userList.get(n).toString().getBytes();
+            File file=new File("D:\\git\\GeneralMotors\\Source\\src\\applications\\application.txt");
+            try {
+                file.createNewFile();
+                FileOutputStream outputStream=new FileOutputStream(file);
+                outputStream.write(jsonString);
+                outputStream.close();
+                DataBase.userList.remove(n);
+                System.out.println("Successfully write to doc");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else {
+            System.out.println("There is not applications yet");
+        }
+
     }
 
     @Override
@@ -42,7 +69,6 @@ public class Admin implements AdminService {
                   stringBuilder.append(row);
               }
               inputStream.close();
-
               String jsonString=stringBuilder.toString();
               Gson gson=new Gson();
               Cars[] users = gson.fromJson(jsonString, Cars[].class);
@@ -50,12 +76,10 @@ public class Admin implements AdminService {
               for (Cars user : users) {
                   System.out.println((i+1)+"->"+user.getModel());
                   i++;
-                  DataBase.carsList.add(user);
               }
               System.out.println("Choose Cars: ");
               int n=scanner.nextInt()-1;
               System.out.println(DataBase.carsList.get(n));
-
           } catch (Exception e) {
               e.printStackTrace();
           }
@@ -70,6 +94,8 @@ public class Admin implements AdminService {
             }
             int n=scanner.nextInt()-1;
             System.out.println(DataBase.userList.get(n));
+        }else {
+            System.out.println("There is not applications yet");
         }
 
     }

@@ -1,11 +1,15 @@
 import admin.Admin;
+import models.Cars;
+import models.CarsServiceImpl;
+import service.CarsService;
 import user.User;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
+        CarsServiceImpl c1=new CarsServiceImpl();
+        c1.run();
         Scanner scanner=new Scanner(System.in);
         boolean isTrue=true;
         while (isTrue){

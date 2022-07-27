@@ -8,5 +8,7 @@ public interface AdminService {
 
     void applications();
 
+    void writeToDoc();
+
 
 }
